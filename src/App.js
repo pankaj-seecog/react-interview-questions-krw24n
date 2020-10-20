@@ -1,9 +1,14 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./style.css";
-import App15 from "./App15";
 import { connect } from "react-redux";
 import {postAction,singlePost} from "./store/actions/post.action";
 const App = props => {
+  const [name,setName]=useState(props.post.title);
+
+useEffect(()=>{
+  console.log("props is ",props)
+},[name])
+
   return (
     <div>
       <hr />
@@ -18,13 +23,14 @@ const App = props => {
         })}
       </ul>
       <hr/>
-      Title : {props.post.title}
+      Title : <input value={name} onChange={(evt)=>{
+setName(evt.target.value)
+      }}/>
     </div>
   );
 };
 
 const mapStateToProps = state => {
-  console.log("The posts are ", state.posts);
   return {
     postList: state.posts,
     err : state.err,
@@ -38,7 +44,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(postAction());
     },
     getPost : (id)=>{
-      console.log('the id is ',id)
        dispatch(singlePost(id))
     }
   };
