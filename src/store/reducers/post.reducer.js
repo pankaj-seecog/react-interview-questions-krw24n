@@ -1,6 +1,7 @@
 let iniState = {
   err: "",
-  posts: []
+  posts: [],
+  post : {title : ""}
 };
 const postReducer = (state = iniState, action) => {
   switch (action.type) {
@@ -12,6 +13,11 @@ const postReducer = (state = iniState, action) => {
         ...state,
         posts: action.value
       };
+    case "POST":
+    return {
+      ...state,
+      post : action.value
+    }  
     case "ERR":
       return {
         ...state,
