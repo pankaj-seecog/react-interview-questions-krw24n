@@ -5,7 +5,7 @@ import App from "./App";
 //redux start
 import store from "./store/store";
 import {Provider} from "react-redux";
-import P1 from './pureC/P1';
+import App17 from './App17';
 //redux end
 
 let iniValue = {
@@ -20,6 +20,6 @@ let iniValue = {
 // );
 
 ReactDOM.render(
-  <P1/>,
+  <App17/>,
   document.getElementById("root")
 );
